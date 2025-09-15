@@ -4,13 +4,12 @@ from flask_mail import Mail
 from flask import *
 from config import Config
 
-mail = Mail()
 
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    
 
     mail.init_app(app)
 
