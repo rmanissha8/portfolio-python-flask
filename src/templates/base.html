@@ -3,32 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>r.manissha</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+    </script>
+    <style>
+        /* Smooth transitions for theme switching */
+        body, nav, button {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Animation for the toggle icon */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotate-sun {
+            animation: rotate 0.5s ease;
+        }
+        
+        .rotate-moon {
+            animation: rotate 0.5s ease reverse;
+        }
+    </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100 text-gray-900">
-    
-    <nav class="bg-white shadow p-4 flex justify-between items-center">
-    
-        <div class="flex-1 flex justify-center">
-            <div class="space-x-6 text-gray-700 font-medium">
-                <a href="#" class="hover:text-red-500">Home</a>
-                <a href="#"class="hover:text-red-500">About</a>
-                <a href="#" class="hover:text-red-500">Projects</a>
-                <a href="#" class="hover:text-red-500">Interactive</a>
-            </div>
-        </div>
-            
-   
-    </nav>
-    <main class="flex-grow container mx-auto p-6">
+<body class="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+<nav class="bg-white dark:bg-gray-800 p-4 flex justify-between items-center shadow">
+    <h1 class="font-bold text-xl text-red-600 dark:text-red-400">r.manissha</h1>
+    <div
+      class="bg-gray-500 w-20 mx-auto mt-6 cursor-pointer rounded-3xl toggler dark:bg-green-500 "
+    >
+      <div
+        class="bg-white w-10 h-10 scale-75 rounded-3xl transition-transform dark:bg-black"
+      ></div>
+    </div>
+    <button id="theme-toggle" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
+        <span id="theme-toggle-icon" class="text-xl">🌙</span>
+        <span id="theme-text" class="text-sm">Dark Mode</span>
+    </button>
+</nav>
+ <main class="flex-grow container mx-auto p-6">
         {% block content %}{% endblock %}
     </main>
+
 
 <footer class="bg-gray-900 text-gray-300 mt-10">
     <div class="max-w-6xl mx-auto px-3 py-5 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Branding -->
+       
         <div>
             <h2 class="text-2xl font-bold text-white">Manissha Rajeindran</h2>
             <p class="mt-2 text-gray-400">
@@ -36,7 +64,7 @@
             </p>
         </div>
         
-        <!-- Links -->
+       
         <div>
             <h3 class="text-lg font-semibold text-white">Quick Links</h3>
             <ul class="mt-2 space-y-2">
@@ -46,7 +74,7 @@
             </ul>
         </div>
         
-        <!-- Social -->
+       
         <div>
             <h3 class="text-lg font-semibold text-white">Connect</h3>
             <div class="mt-2 flex space-x-4">
@@ -57,11 +85,55 @@
         </div>
     </div>
     
-    <!-- Bottom -->
+
     <div class="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
         © {{ 2025 }} r.manissha
     </div>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-toggle-icon");
+    const themeText = document.getElementById("theme-text");
+    const currentThemeSpan = document.getElementById("current-theme"); // might not exist
+
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(isDark) {
+        if (isDark) {
+            html.classList.add("dark");
+            icon.textContent = "☀️";
+            themeText.textContent = "Light Mode";
+            if (currentThemeSpan) currentThemeSpan.textContent = "Dark";
+            localStorage.setItem("theme", "dark");
+        } else {
+            html.classList.remove("dark");
+            icon.textContent = "🌙";
+            themeText.textContent = "Dark Mode";
+            if (currentThemeSpan) currentThemeSpan.textContent = "Light";
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    // Initial load
+    applyTheme(savedTheme === "dark" || (!savedTheme && systemPrefersDark));
+
+    // Toggle on button click
+    toggleBtn.addEventListener("click", () => {
+        const isDark = !html.classList.contains("dark");
+        icon.classList.add(isDark ? "rotate-sun" : "rotate-moon");
+
+        setTimeout(() => {
+            applyTheme(isDark);
+            icon.classList.remove("rotate-sun", "rotate-moon");
+        }, 500);
+    });
+});
+
+</script>
 
 </body>
 </html>
