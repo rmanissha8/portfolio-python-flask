@@ -36,12 +36,7 @@
 
 <nav class="bg-white dark:bg-gray-800 p-4 flex justify-between items-center shadow">
     <h1 class="font-bold text-xl text-red-600 dark:text-red-400">r.manissha</h1>
-    <div
-      class="bg-gray-500 w-20 mx-auto mt-6 cursor-pointer rounded-3xl toggler dark:bg-green-500 "
-    >
-      <div
-        class="bg-white w-10 h-10 scale-75 rounded-3xl transition-transform dark:bg-black"
-      ></div>
+   
     </div>
     <button id="theme-toggle" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
         <span id="theme-toggle-icon" class="text-xl">🌙</span>
@@ -103,20 +98,20 @@
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     function applyTheme(isDark) {
-        if (isDark) {
-            html.classList.add("dark");
-            icon.textContent = "☀️";
-            themeText.textContent = "Light Mode";
-            if (currentThemeSpan) currentThemeSpan.textContent = "Dark";
-            localStorage.setItem("theme", "dark");
-        } else {
-            html.classList.remove("dark");
-            icon.textContent = "🌙";
-            themeText.textContent = "Dark Mode";
-            if (currentThemeSpan) currentThemeSpan.textContent = "Light";
-            localStorage.setItem("theme", "light");
-        }
+    if (isDark) {
+        html.classList.add("dark");
+        icon.textContent = "☀️";
+        themeText.textContent = "Dark Mode";   // show current mode
+        if (currentThemeSpan) currentThemeSpan.textContent = "Dark";
+        localStorage.setItem("theme", "dark");
+    } else {
+        html.classList.remove("dark");
+        icon.textContent = "🌙";
+        themeText.textContent = "Light Mode";  // show current mode
+        if (currentThemeSpan) currentThemeSpan.textContent = "Light";
+        localStorage.setItem("theme", "light");
     }
+}
 
     // Initial load
     applyTheme(savedTheme === "dark" || (!savedTheme && systemPrefersDark));
