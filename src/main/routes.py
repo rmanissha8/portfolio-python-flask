@@ -4,4 +4,14 @@ from src.main import main
 
 @main.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('index.html')
+
+
+
+@main.route('/about')
+def about():
+    return render_template('about.html')
+
+@main.route('/projects')
+def projects():
+    return render_template('projects.html')

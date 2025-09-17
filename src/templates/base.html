@@ -1,71 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="icon" href="/static/images/logo.png">
-  <title>r.manissha</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="h-screen w-screen">
-  <div class="flex h-full">
-    
-    <!-- Left Half -->
-    <div class="w-1/2 bg-white flex flex-col items-center justify-center p-8">
-      <!-- Square image frame -->
-      <div class="w-[262.6px] h-[300px] object-cover border-gray-400 ">
-        <img src="/static/images/me.jpg" alt="Profile" class="w-full h-full object-cover">
-      </div>
-
-      <!-- Name -->
-      <p class="mt-6 text-[28px] font-[Open_Sans] font-bold text-gray-800">Manissha Rajeindran
-      </p>
-
-      <p class="mt-2 text-[18px] font-[Open_Sans] font-light text-gray-800">Biomedical Engineer</p>
-
-      <!-- Email Me Button -->
-      <button class="mt-4 px-6 py-2 w-[262.6px] h-[46px] bg-[#12229d] text-white font-[Open_Sans] text-[11px]  font-bold hover:bg-blue-700">
-        Email Me
-      </button>
-
-      <!-- Social Icons -->
-      <div class="flex space-x-6 mt-6">
-        <!-- GitHub -->
-        <a href="https://github.com/rmanissha8" target="_blank" class="text-gray-700 hover:text-black text-2xl">
-          <i class="fab fa-github"></i>
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/manissha-rajeindran-03807a24a/" target="_blank" class="text-blue-700 hover:text-blue-900 text-2xl">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-    </div>
-    
-    <!-- Right Half -->
-    <div class="w-1/2 bg-[#050a30] text-[18px] text-white flex flex-col justify-center p-12">
-      <!-- Heading -->
-      <h2 class="text-[#cae8ff] text-[42px] font-bold mb-4">About Me</h2>
-      <p class="mb-6 leading-relaxed text-lg">
-        I am a tech-savvy individual with a Bachelor's degree in Biomedical Engineering, 
-        seeking employment as a Robotics Research Engineer. 
-        I am passionate about consistently advancing my knowledge and skills. 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r.manissha</title>
+    <link rel="icon" href="/static/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+    </script>
+    <style>
+        /* Smooth transitions for theme switching */
+        body, nav, button {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
         
-      </p>
-      
-      <!-- Buttons -->
-      <div class="flex space-x-12 mt-12">
-        <button class="px-6 py-2 w-[262.6px] h-[46px] bg-[#12229d] text-white font-[Open_Sans] text-[11px]  font-bold hover:bg-blue-700">
-          Resume
-        </button>
-        <button class="px-6 py-2 w-[262.6px] h-[46px] bg-[#12229d] text-white font-[Open_Sans] text-[11px]  font-bold hover:bg-blue-700">
-          Portfolio
-        </button>
-      </div>
-      <div class="flex space-x-4 justify-center mt-6">
+        /* Animation for the toggle icon */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotate-sun {
+            animation: rotate 0.5s ease;
+        }
+        
+        .rotate-moon {
+            animation: rotate 0.5s ease reverse;
+        }
+    </style>
 
-    </div>
-    
+</head>
+
+
+<body class="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+    <nav class="bg-white dark:bg-gray-800 p-4 flex items-center justify-between shadow relative">
+
+        <!-- Dark Mode Toggle (Left) -->
+        <div class="flex-shrink-0">
+            <button id="theme-toggle" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
+                <span id="theme-toggle-icon" class="text-xl">🌙</span>
+                <span id="theme-text" class="text-sm">Dark Mode</span>
+            </button>
+        </div>
+
+        <!-- Center Links -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-20 text-gray-700 dark:text-gray-200 font-medium">
+            <a href="/" class="hover:text-blue-500">Home</a>
+            <a href="/about" class="hover:text-blue-500">About</a>
+            <a href="/projects" class="hover:text-blue-500">Projects</a>
+        </div>
+
+</nav>
+
+ <main class="flex-grow container mx-auto p-12">
+        {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-white dark:bg-gray-800 mt-10"> 
+  <div class="border-t border-gray-300 dark:border-gray-700 text-center py-4 text-sm 
+              text-gray-700 dark:text-gray-300 flex items-center justify-center space-x-4">
+      
+      <span>© 2025 R. Manissha </span>
+      <span>|</span>
+        <span>Crafted with ♥️ using Python-Flask</span>
+        <span>|</span>
+      <!-- GitHub -->
+      <a href="https://github.com/yourusername" target="_blank" 
+         class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+          <i class="fab fa-github text-lg"></i>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/yourusername" target="_blank" 
+         class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          <i class="fab fa-linkedin text-lg"></i>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:your@email.com" 
+         class="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+          <i class="fas fa-envelope text-lg"></i>
+      </a>
   </div>
+</footer>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-toggle-icon");
+    const themeText = document.getElementById("theme-text");
+    const currentThemeSpan = document.getElementById("current-theme"); // might not exist
+
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(isDark) {
+    if (isDark) {
+        html.classList.add("dark");
+        icon.textContent = "🌙";
+        themeText.textContent = "Dark Mode";   // show current mode
+        if (currentThemeSpan) currentThemeSpan.textContent = "Dark";
+        localStorage.setItem("theme", "dark");
+    } else {
+        html.classList.remove("dark");
+        icon.textContent = "☀️";
+        themeText.textContent = "Light Mode";  // show current mode
+        if (currentThemeSpan) currentThemeSpan.textContent = "Light";
+        localStorage.setItem("theme", "light");
+    }
+}
+
+    // Initial load
+    applyTheme(savedTheme === "dark" || (!savedTheme && systemPrefersDark));
+
+    // Toggle on button click
+    toggleBtn.addEventListener("click", () => {
+        const isDark = !html.classList.contains("dark");
+        icon.classList.add(isDark ? "rotate-sun" : "rotate-moon");
+
+        setTimeout(() => {
+            applyTheme(isDark);
+            icon.classList.remove("rotate-sun", "rotate-moon");
+        }, 500);
+    });
+});
+
+</script>
+
 </body>
 </html>
