@@ -8,6 +8,7 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
+    MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
     @staticmethod
     def init_app(app):
         pass

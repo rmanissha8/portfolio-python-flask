@@ -38,26 +38,46 @@
 
 <body class="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-    <nav class="bg-white dark:bg-gray-800 p-4 flex items-center justify-between shadow relative">
+    <nav class="bg-white dark:bg-gray-800 p-4 shadow relative">
 
-        <!-- Dark Mode Toggle (Left) -->
-        <div class="flex-shrink-0">
-            <button id="theme-toggle" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
-                <span id="theme-toggle-icon" class="text-xl">🌙</span>
-                <span id="theme-text" class="text-sm">Dark Mode</span>
-            </button>
-        </div>
+  <div class="flex items-center justify-between">
+    <!-- Dark Mode Toggle (Left) -->
+    <div class="flex-shrink-0">
+      <button id="theme-toggle" 
+              class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
+        <span id="theme-toggle-icon" class="text-xl">🌙</span>
+        <span id="theme-text" class="text-sm hidden sm:inline">Dark Mode</span>
+      </button>
+    </div>
 
-        <!-- Center Links -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-20 text-gray-700 dark:text-gray-200 font-medium">
-            <a href="/" class="hover:text-blue-500">Home</a>
-            <a href="/about" class="hover:text-blue-500">About</a>
-            <a href="/projects" class="hover:text-blue-500">Projects</a>
-        </div>
+    <!-- Center Links (hidden on small screens, shown on md+) -->
+    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 
+                space-x-10 text-gray-700 dark:text-gray-200 font-medium">
+      <a href="/" class="hover:text-blue-500">Home</a>
+      <a href="/projects" class="hover:text-blue-500">Projects</a>
+      <a href="/about" class="hover:text-blue-500">Résumé</a>
+    </div>
+
+    <!-- Mobile Links (right side hamburger) -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-2xl text-gray-700 dark:text-gray-200">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <!-- Dropdown Menu for Mobile -->
+  <div id="mobile-menu" class="hidden flex-col mt-4 space-y-2 md:hidden text-gray-700 dark:text-gray-200 font-medium">
+    <a href="/" class="block hover:text-blue-500">Home</a>
+    <a href="/projects" class="hover:text-blue-500">Projects</a>
+    <a href="/about" class="block hover:text-blue-500">Résumé</a>
+
+  </div>
 
 </nav>
 
- <main class="flex-grow container mx-auto p-12">
+
+ <main class="flex-grow container mx-auto p-12 ">
         {% block content %}{% endblock %}
 </main>
 
@@ -134,6 +154,17 @@
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
 
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+});
+</script>
 </body>
 </html>

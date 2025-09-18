@@ -1,7 +1,45 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container mx-auto p-12 flex flex-col space-y-8">
 
- <h2>About Me </b> !</h2> 
+  <!-- Header -->
+  <div class="flex justify-between items-center">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">My Resume</h1>
+    <a href="{{ url_for('static', filename='files/Resume.pdf') }}" 
+       download 
+       class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition-colors">
+      Download PDF
+    </a>
+  </div>
 
+  <!-- Education -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-2">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Education</h2>
+    <ul class="list-disc list-inside">
+      <li>Bachelor's in Biomedical Engineering — University Name, Year</li>
+      <li>Certifications: Python, Bioinformatics, CAD, Fusion 360</li>
+    </ul>
+  </div>
+
+  <!-- Experience -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-2">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Experience</h2>
+    <ul class="list-disc list-inside space-y-1">
+      <li>Bioinformatics R&D Engineer — Credence Genomics, Year–Present</li>
+      <li>Developed LIMS tools with Flask, Python & Galaxy integration</li>
+      <li>Instructor — Taught kids Arduino, Python, C++, IoT product design</li>
+      <li>Robotics & Biomedical devices research projects</li>
+    </ul>
+  </div>
+
+  <!-- Skills -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-2">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Skills</h2>
+    <p>Python, C++, MATLAB, Bash, MySQL, Flask, React, Tailwind, CUDA</p>
+    <p>CAD design, PCB design, Fusion 360, Robotics prototyping</p>
+  </div>
+
+</div>
 {% endblock %}
