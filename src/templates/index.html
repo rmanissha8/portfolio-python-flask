@@ -1,6 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+<style>
+  @keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+  }
+
+  .animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%; /* pivot point at the bottom of the hand */
+  animation: wave 2s infinite;
+  }
+</style>
+
 <div class="flex flex-col md:flex-row items-center md:items-start justify-between min-h-[80vh]">
     
   <!-- Left Half: About Me -->
@@ -8,33 +32,16 @@
     <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100 flex items-center">
         Hi, I’m R. Manissha 
         <span class="ml-2 inline-block animate-wave">👋</span>
-        </h1>
+    </h1>
 
-
-        <style>
-        @keyframes wave {
-        0% { transform: rotate(0deg); }
-        10% { transform: rotate(14deg); }
-        20% { transform: rotate(-8deg); }
-        30% { transform: rotate(14deg); }
-        40% { transform: rotate(-4deg); }
-        50% { transform: rotate(10deg); }
-        60% { transform: rotate(0deg); }
-        100% { transform: rotate(0deg); }
-        }
-
-        .animate-wave {
-        display: inline-block;
-        transform-origin: 70% 70%; /* pivot point at the bottom of the hand */
-        animation: wave 2s infinite;
-        }
-        </style>
-
+    <!--Time stamp-->
     <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
     {{ now }}
     </p>
+
+    <!--Description about me-->
     <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-      I’m a tech-savvy individual with a background in <span class="font-semibold">Biomedical Engineering</span>,
+      I’m a tech-savvy individual with a bachelor's in <span class="font-semibold">Biomedical Engineering</span>,
       passionate about <span class="font-semibold">building circuits</span>, programming, and creating 
       impactful solutions.  
     </p>
@@ -42,33 +49,38 @@
       I love blending <span class="font-semibold">science and technology</span> to solve real-world problems, 
       and I’m always exploring <span class="font-semibold">new innovations</span> in robotics, coding, and design.  
     </p>
-    <a href="/projects" class="inline-block px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
-      View My Projects 🚀
-    </a>
+
+    <!-- Projects Button -->
+    <div class="flex justify-left mt-6">
+      <button 
+        onclick="window.location.href='/projects'"
+        class="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow transition">
+        View My Projects 🚀
+      </button>
+    </div>
+
     <div class="flex flex-col items-center justify-center p-8">
+      <div class="w-full max-w-xl bg-white/80 dark:bg-gray-800/80 
+                  backdrop-blur-md rounded-2xl p-6 shadow-lg 
+                  border border-gray-200 dark:border-gray-700">
+    
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+          Where I'm from
+        </h3>
 
-  <div class="w-full max-w-xl bg-white/80 dark:bg-gray-800/80 
-              backdrop-blur-md rounded-2xl p-6 shadow-lg 
-              border border-gray-200 dark:border-gray-700">
+        {% if dist_km %}
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            I’m from Colombo, Sri Lanka — roughly <strong>{{ dist_km }} km</strong> away from you.
+          </p>
+        {% else %}
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            I’m from Colombo, Sri Lanka — couldn’t determine your distance.
+          </p>
+        {% endif %}
 
-    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
-      Where I'm from
-    </h3>
-
-    {% if dist_km %}
-      <p class="text-sm text-gray-600 dark:text-gray-300">
-        I’m from Colombo, Sri Lanka — roughly <strong>{{ dist_km }} km</strong> away from you.
-      </p>
-    {% else %}
-      <p class="text-sm text-gray-600 dark:text-gray-300">
-        I’m from Colombo, Sri Lanka — couldn’t determine your distance.
-      </p>
-    {% endif %}
-
-    <div id="map" class="mt-4 w-full h-60 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700"></div>
-
-  </div>
-</div>
+        <div id="map" class="mt-4 w-full h-60 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Right Half: Profile Picture -->
@@ -79,11 +91,8 @@
 
 </div>
 
-
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 <script>
-    mapboxgl.accessToken = "{{ MAPBOX_TOKEN }}";  
+  mapboxgl.accessToken = "{{ MAPBOX_TOKEN }}";  
 
   const colombo = [79.8612, 6.9271];
   const user = [{% if user_lon and user_lat %} {{ user_lon }}, {{ user_lat }} {% else %} null, null {% endif %}];

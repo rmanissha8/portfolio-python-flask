@@ -9,9 +9,7 @@ def get_my_location():
 def get_test_location():
     geolocator = Photon(user_agent="measurements")
     location = geolocator.geocode("London, United Kingodm")
-    return location.latitude, location.longitude
-
-    
+    return location.latitude, location.longitude  
 
 def haversine(lat1, lon1, lat2, lon2):
     """Calculate distance in km between two coordinates"""

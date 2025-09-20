@@ -1,7 +1,0 @@
-Create a portfolio
-Use Tailwind CSS
-
-Flask
-Mail
-WTForms
-Loggers

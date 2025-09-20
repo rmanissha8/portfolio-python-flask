@@ -8,7 +8,6 @@ import geocoder
 @main.route('/', methods=["GET"])
 def index():
 
-    
     ip = request.environ['REMOTE_ADDR']
     
     g = geocoder.ip(ip)
@@ -32,10 +31,10 @@ def index():
 
 
 
-@main.route('/about')
+@main.route('/about', methods=["GET"])
 def about():
     return render_template('about.html')
 
-@main.route('/projects')
+@main.route('/projects', methods=["GET"])
 def projects():
     return render_template('projects.html')

@@ -12,6 +12,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     mail.init_app(app)
+    
     @app.context_processor
     def inject_mapbox_token():
         return dict(MAPBOX_TOKEN=app.config["MAPBOX_TOKEN"])
