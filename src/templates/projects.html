@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mx-auto p-12">
+<div class="container mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12">
 
-  <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center">My Projects</h1>
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center">
+    My Projects
+  </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
     
     <!-- Project 1 -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col">
-      <img src="{{ url_for('static', filename='images/project1.png') }}" alt="Project 1" class="w-full h-48 object-cover">
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project One</h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+      <img src="{{ url_for('static', filename='images/project1.png') }}" alt="Project 1" 
+           class="w-full aspect-video object-cover">
+      <div class="p-4 sm:p-6 flex flex-col flex-grow">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project One</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm sm:text-base">
           Brief description of your first project. What it does and the technologies used.
         </p>
         <div class="mt-auto">
           <a href="https://github.com/yourusername/project1" target="_blank" 
-             class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors">
+             class="px-3 py-2 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors text-sm sm:text-base">
             View on GitHub
           </a>
         </div>
@@ -26,15 +29,16 @@
 
     <!-- Project 2 -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col">
-      <img src="{{ url_for('static', filename='images/project2.png') }}" alt="Project 2" class="w-full h-48 object-cover">
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project Two</h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+      <img src="{{ url_for('static', filename='images/project2.png') }}" alt="Project 2" 
+           class="w-full aspect-video object-cover">
+      <div class="p-4 sm:p-6 flex flex-col flex-grow">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project Two</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm sm:text-base">
           Brief description of your second project. Technologies and purpose.
         </p>
         <div class="mt-auto">
           <a href="https://github.com/yourusername/project2" target="_blank" 
-             class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors">
+             class="px-3 py-2 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors text-sm sm:text-base">
             View on GitHub
           </a>
         </div>
@@ -43,15 +47,16 @@
 
     <!-- Project 3 -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col">
-      <img src="{{ url_for('static', filename='images/project3.png') }}" alt="Project 3" class="w-full h-48 object-cover">
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project Three</h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+      <img src="{{ url_for('static', filename='images/project3.png') }}" alt="Project 3" 
+           class="w-full aspect-video object-cover">
+      <div class="p-4 sm:p-6 flex flex-col flex-grow">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Project Three</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm sm:text-base">
           Brief description of your third project. Highlights and technologies.
         </p>
         <div class="mt-auto">
           <a href="https://github.com/yourusername/project3" target="_blank" 
-             class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors">
+             class="px-3 py-2 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors text-sm sm:text-base">
             View on GitHub
           </a>
         </div>

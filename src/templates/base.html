@@ -38,74 +38,64 @@
 
 <body class="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-    <nav class="bg-white dark:bg-gray-800 p-4 shadow relative">
+  <nav class="bg-white dark:bg-gray-800 p-4 shadow">
+    <div class="flex items-center justify-between relative">
+      
+      <!-- Dark Mode Toggle (Always Left) -->
+      <div class="flex-shrink-0">
+        <button id="theme-toggle" 
+                class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
+          <span id="theme-toggle-icon" class="text-xl">🌙</span>
+          <span id="theme-text" class="text-sm hidden sm:inline">Dark Mode</span>
+        </button>
+      </div>
 
-  <div class="flex items-center justify-between">
-    <!-- Dark Mode Toggle (Left) -->
-    <div class="flex-shrink-0">
-      <button id="theme-toggle" 
-              class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center space-x-2">
-        <span id="theme-toggle-icon" class="text-xl">🌙</span>
-        <span id="theme-text" class="text-sm hidden sm:inline">Dark Mode</span>
-      </button>
+      <!-- Nav Links (Always Center) -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-6 
+                  text-gray-700 dark:text-gray-200 font-medium text-base">
+        <a href="/" class="hover:text-blue-500">Home</a>
+        <a href="/projects" class="hover:text-blue-500">Projects</a>
+        <a href="/about" class="hover:text-blue-500">Résumé</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Center Links (hidden on small screens, shown on md+) -->
-    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 
-                space-x-10 text-gray-700 dark:text-gray-200 font-medium">
-      <a href="/" class="hover:text-blue-500">Home</a>
-      <a href="/projects" class="hover:text-blue-500">Projects</a>
-      <a href="/about" class="hover:text-blue-500">Résumé</a>
-    </div>
-
-    <!-- Mobile Links (right side hamburger) -->
-    <div class="md:hidden">
-      <button id="menu-toggle" class="text-2xl text-gray-700 dark:text-gray-200">
-        ☰
-      </button>
-    </div>
-  </div>
-
-  <!-- Dropdown Menu for Mobile -->
-  <div id="mobile-menu" class="hidden flex-col mt-4 space-y-2 md:hidden text-gray-700 dark:text-gray-200 font-medium">
-    <a href="/" class="block hover:text-blue-500">Home</a>
-    <a href="/projects" class="hover:text-blue-500">Projects</a>
-    <a href="/about" class="block hover:text-blue-500">Résumé</a>
-
-  </div>
-
-</nav>
-
-
- <main class="flex-grow container mx-auto p-12 ">
+<main class="flex-grow container mx-auto p-12 ">
         {% block content %}{% endblock %}
 </main>
 
 <footer class="bg-white dark:bg-gray-800 mt-10"> 
-  <div class="border-t border-gray-300 dark:border-gray-700 text-center py-4 text-sm 
-              text-gray-700 dark:text-gray-300 flex items-center justify-center space-x-4">
-      
-      <span>© 2025 R. Manissha </span>
-      <span>|</span>
-        <span>Crafted with ♥️ using Python-Flask</span>
-        <span>|</span>
-      <!-- GitHub -->
-      <a href="https://github.com/yourusername" target="_blank" 
-         class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
-          <i class="fab fa-github text-lg"></i>
-      </a>
+  <div class="border-t border-gray-300 dark:border-gray-700 
+              text-center py-4 text-xs sm:text-sm 
+              text-gray-700 dark:text-gray-300 
+              flex flex-col sm:flex-row items-center justify-center 
+              space-y-2 sm:space-y-0 sm:space-x-4">
 
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/yourusername" target="_blank" 
-         class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-          <i class="fab fa-linkedin text-lg"></i>
-      </a>
+      <span>© 2025 R. Manissha</span>
+      <span class="hidden sm:inline">|</span>
+      <span>Crafted with ♥️ using Python-Flask</span>
+      <span class="hidden sm:inline">|</span>
 
-      <!-- Email -->
-      <a href="mailto:your@email.com" 
-         class="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-          <i class="fas fa-envelope text-lg"></i>
-      </a>
+      <!-- Social Icons Row -->
+      <div class="flex space-x-4">
+        <!-- GitHub -->
+        <a href="https://github.com/yourusername" target="_blank" 
+           class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+            <i class="fab fa-github text-lg"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/yourusername" target="_blank" 
+           class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <i class="fab fa-linkedin text-lg"></i>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:your@email.com" 
+           class="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+            <i class="fas fa-envelope text-lg"></i>
+        </a>
+      </div>
   </div>
 </footer>
 
