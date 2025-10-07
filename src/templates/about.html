@@ -1,117 +1,98 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mx-auto p-12 flex flex-col space-y-8">
+<div class="container mx-auto px-3 sm:px-6 md:px-12 py-4 sm:py-8 flex flex-col space-y-5 sm:space-y-8">
 
   <!-- Header -->
-  <div class="flex justify-between items-center">
-    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">
-      <i class="fas fa-file-alt text-blue-600 mr-3"></i> My Resume
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
+    <h1 class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+      <i class="fas fa-file-alt text-blue-600"></i> My Resume
     </h1>
     <a href="{{ url_for('static', filename='files/Resume.pdf') }}" 
        download 
-       class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center gap-2">
+       class="w-full sm:w-auto px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
       <i class="fas fa-download"></i> Download PDF
     </a>
   </div>
   
 
-    <!-- Experience -->
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+  <!-- Experience -->
+  <div class="bg-white dark:bg-gray-800 p-3 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
       <i class="fas fa-briefcase text-purple-500"></i> Experience
     </h2>
-    <ul class="list-inside space-y-2">
-      <li class="mb-2">
+    <ul class="list-inside space-y-3 text-base leading-relaxed">
+      
+      <li>
         <div class="flex flex-col">
           <b>Bioinformatician Level 1 — Credence Genomics</b>
-          <p class="text-sm text-gray-500 dark:text-gray-400">Feb 2023 – Present</p>
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Feb 2023 – Present</p>
         </div>
-        <ul class="list-disc list-inside mt-2 space-y-1">
-          <li>
-            <i>Leading and mentoring a team of bioinformaticians and researchers, fostering innovation and skill development.</i>
-          </li>
-          <li>
-            <i>Hands-on experience with Oxford Nanopore, Illumina, and Sanger sequencing, applying these methods in metagenomics,
-              NIPT, and Whole Exome Sequencing.</i>
-          </li>
-          <li>
-            <i>Proficient in Python, R, and Bash scripting for data analysis and pipeline development.</i>
-          </li>
+        <ul class="list-disc list-inside mt-1 space-y-1 text-gray-700 dark:text-gray-300">
+          <li>Leading and mentoring a team of bioinformaticians and researchers, fostering innovation and skill development.</li>
+          <li>Hands-on experience with Oxford Nanopore, Illumina, and Sanger sequencing in metagenomics, NIPT, and Whole Exome Sequencing.</li>
+          <li>Proficient in Python, R, and Bash scripting for data analysis and pipeline development.</li>
         </ul>
       </li>
 
+      <li>
         <div class="flex flex-col">
           <b>Trainee Bioinformatician — Credence Genomics</b>
-          <p class="text-sm text-gray-500 dark:text-gray-400">Nov 2022 - Feb 2023</p>
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Nov 2022 - Feb 2023</p>
         </div>
-        <ul class="list-disc list-inside mt-2 space-y-1">
-          <li>
-            <i>Designed and implemented a custom LIMS using Flask (Python) to streamline sample tracking, data management, and reporting workflows.</i>
-          </li>
-          <li>
-            <i>Built and deployed custom Galaxy tools tailored for genomics and metagenomics analysis pipelines</i>
-          </li>
-          <li>
-            <i>Experienced on working with Linux machines, VirtualBox environments, and MySQL servers during training, developing foundational system administration and database skills.</i>
-          </li>
+        <ul class="list-disc list-inside mt-1 space-y-1 text-gray-700 dark:text-gray-300">
+          <li>Designed and implemented a custom LIMS using Flask (Python) to streamline sample tracking and reporting workflows.</li>
+          <li>Built and deployed custom Galaxy tools tailored for genomics and metagenomics pipelines.</li>
+          <li>Worked with Linux, VirtualBox, and MySQL servers, gaining foundational system administration and database skills.</li>
         </ul>
       </li>
 
-      
-      </li>
+      <li>
         <div class="flex flex-col">
-          <b> Engineering Instructor — Meulabs</b>
-          <p class="text-sm text-gray-500 dark:text-gray-400">Oct 2021 - Nov 2022</p>
+          <b>Engineering Instructor — Meulabs</b>
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Oct 2021 - Nov 2022</p>
         </div>
-        <ul class="list-disc list-inside mt-2 space-y-1">
-          <li>
-            <i>Taught product design, IoT systems, and prototyping to students through practical, project-based learning.</i>
-          </li>
-          <li>
-            <i>Built and deployed custom Galaxy tools tailored for genomics and metagenomics analysis pipelines</i>
-          </li>
-          <li>
-            <i>Mentored students on design thinking, problem-solving, and product development from concept to prototype.</i>
-          </li>
+        <ul class="list-disc list-inside mt-1 space-y-1 text-gray-700 dark:text-gray-300">
+          <li>Taught product design, IoT systems, and prototyping to students through project-based learning.</li>
+          <li>Built and deployed custom Galaxy tools tailored for genomics and metagenomics pipelines.</li>
+          <li>Mentored students on design thinking, problem-solving, and product development from concept to prototype.</li>
         </ul>
       </li>
 
-      </ul>
+    </ul>
   </div>
 
 
   <!-- Education -->
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-4">
-      <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
-        <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400"></i>
-        Education
-      </h2>
-
-      <div class="flex flex-col mb-4">
-        <b>BEng. (Hons) in Biomedical Engineering</b>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Nov 2018 – Sep 2022</p>
-        <p class="text-gray-700 dark:text-gray-300">
-          Liverpool John Moores University (affiliated with ICBT Campus, Sri Lanka)
-        </p>
-      </div>
+  <div class="bg-white dark:bg-gray-800 p-3 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-2">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+      <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400"></i> Education
+    </h2>
+    <div class="flex flex-col">
+      <b>BEng. (Hons) in Biomedical Engineering</b>
+      <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Nov 2018 – Sep 2022</p>
+      <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+        Liverpool John Moores University (affiliated with ICBT Campus, Sri Lanka)
+      </p>
     </div>
-
+  </div>
 
 
   <!-- Skills -->
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-3">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+  <div class="bg-white dark:bg-gray-800 p-3 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-2">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
       <i class="fas fa-tools text-pink-500"></i> Skills
     </h2>
-    <p class="flex items-center gap-2">
-      <i class="fas fa-laptop-code text-blue-400"></i>
-      Python, C++, MATLAB, Bash, MySQL, Flask, React, Tailwind, CUDA
-    </p>
-    <p class="flex items-center gap-2">
-      <i class="fas fa-drafting-compass text-indigo-400"></i>
-      CAD design, PCB design, Fusion 360, Robotics prototyping
-    </p>
+    <ul class="space-y-2 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+      <li class="flex items-center gap-2">
+        <i class="fas fa-laptop-code text-blue-400"></i>
+        Python, C++, MATLAB, Bash, MySQL, Flask, React, Tailwind, CUDA
+      </li>
+      <li class="flex items-center gap-2">
+        <i class="fas fa-drafting-compass text-indigo-400"></i>
+        CAD design, PCB design, Fusion 360, Robotics prototyping
+      </li>
+    </ul>
   </div>
 
 </div>
